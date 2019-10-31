@@ -1,0 +1,9 @@
+<h4>Active</h4>
+<div class="active">
+    <div class="card-wrapper" *ngFor="let card of value">
+      <div class="prev" (click)="sendCard(card, type, 'playerHand')">&laquo;</div>
+      <img src="assets/three-spears/{{card.name}}.png" alt="{{card.name}}" class="card">
+      <div class="discard" (click)="sendCard(card, type, 'discardPile')">X</div>
+      <div class="lose" (click)="sendCard(card, type, 'lostPile')">X</div>
+    </div>
+  </div>

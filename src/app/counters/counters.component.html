@@ -1,0 +1,6 @@
+<label for="{{ type }}">
+  {{type}}: 
+  <input [(ngModel)]="value" type="number" name="value" id="value">
+  <button class="add-{{ type }}" (click)="adjustValue('add')">+</button>
+  <button class="sub-{{ type }}" (click)="adjustValue('sub')">-</button>
+</label>

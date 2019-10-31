@@ -1,0 +1,45 @@
+.active {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  min-height: 300px;
+}
+.card {
+  max-width: 100%;
+  max-height: 100%;
+}
+.card-wrapper {
+  color: white;
+  max-width: 200px;
+  max-height: 300px;
+  font-size: 2em;
+  position: relative;
+
+  transition: margin-left .5s, margin-bottom .5s, font-size .5s, max-width .5s, max-height .5s;
+  
+  z-index: 1;
+}
+// .card-wrapper:hover {
+//   max-width: 400px;
+//   max-height: 600px;
+//   font-size: 4em;
+
+//   z-index: 2;
+// }
+.prev {
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.discard {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.lose {
+  bottom: 0;
+  right: 0;
+  color: red;
+  position: absolute;
+}

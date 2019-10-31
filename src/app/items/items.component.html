@@ -1,0 +1,12 @@
+<h4>Inventory</h4>
+<div class="items">
+  <div class="item-wrapper" *ngFor="let item of value" (click)="tap(item)">
+    <img  src="assets/inventory/{{item.name}}.png"
+          alt="{{item.name}}" 
+          title="{{item.name}}" 
+          class="item"
+          [ngClass]="{'tapped': item.spent}">
+    <div *ngIf="item.consumed" class="item consumed">X</div>
+    <div *ngIf="item.charges > 0 && item.charges < item.maxCharges" class="charges">{{item.charges}}</div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<!-- <app-counters type="hp"></app-counters>
+<app-counters type="xp"></app-counters> -->
+
+<app-cards type="pool" [value]="cardPool" (card)="moveCard($event)"></app-cards>
+<app-cards type="hand" [value]="playerHand" (card)="moveCard($event)"></app-cards>
+<app-active [value]="activeArea" (card)="moveCard($event)"></app-active>
+<div class="discard_lost_wrapper">
+  <app-discard [value]="discardPile" (card)="moveCard($event)"></app-discard>
+  <app-lost [value]="lostPile" (card)="moveCard($event)"></app-lost>
+</div>
+<app-items [value]="inventory"></app-items>

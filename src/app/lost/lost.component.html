@@ -1,0 +1,7 @@
+<h4>Lost</h4>
+<div class="lost">
+    <div class="card-wrapper" *ngFor="let card of value">
+      <div class="prev" (click)="sendCard(card, type, 'playerHand')">&laquo;</div>
+      <img src="assets/three-spears/{{card.name}}.png" alt="{{card.name}}" class="card">
+    </div>
+  </div>

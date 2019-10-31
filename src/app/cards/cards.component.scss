@@ -1,0 +1,45 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.card {
+  max-width: 100%;
+  max-height: 100%;
+}
+.card-wrapper {
+  max-width: 200px;
+  max-height: 300px;
+  color: white;
+  font-size: 2em;
+  position: relative;
+
+  transition: margin-left .5s, margin-bottom .5s, font-size .5s, max-width .5s, max-height .5s;
+  
+  z-index: 1;
+}
+.card-wrapper:not(:first-child) {
+  margin-left: -50px;
+}
+.card-wrapper:hover {
+  max-width: 300px;
+  max-height: 450px;
+  color: white;
+  font-size: 4em;
+  margin-bottom: -300px;
+
+  z-index: 2;
+}
+.card-wrapper:hover + .card-wrapper {
+  margin-left: 0px;
+}
+.next {
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+.prev {
+  left: 0;
+  top: 0;
+  position: absolute;
+}

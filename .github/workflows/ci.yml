@@ -1,0 +1,52 @@
+name: gloomhaven-character-helper
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Docker
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: ${{ secrets.DOCKER_USERNAME }}/gloomhaven-character-helper:latest
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    # - uses: actions/heroku@master
+    # - name: Publish to Heroku
+    #   env:
+    #     REGISTRY: registry.heroku.com
+    #     IMAGE_NAME: registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
+    #     USERNAME: _
+    #     PASSWORD: ${{ secrets.HEROKU_API_KEY }}
+    #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+    #   run: |
+    #     heroku container:login
+    #     docker login --username=$USERNAME --password=$PASSWORD $REGISTRY
+    #     docker image ls
+    #     docker tag $DOCKER_USERNAME/gloomhaven-character-helper $IMAGE_NAME
+    #     docker push $IMAGE_NAME
+    # - uses: actions/heroku@master
+    - name: Release to Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: |
+        heroku container:login
+        heroku container:push -a td-gloomy web
+        heroku container:release -a td-gloomy web
+        # heroku container:pull -a registry.heroku.com/${{ secrets.HEROKU_APP_NAME }} web
+        # heroku container:release -a registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web web
+  # release:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/heroku@master
+  #   - name: Release to Heroku
+  #     env:
+  #       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  #     run: |
+  #       heroku container:login
+  #       heroku container:pull -a registry.heroku.com/${{ secrets.HEROKU_APP_NAME }} web
+  #       heroku container:release -a registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web web

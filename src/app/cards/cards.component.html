@@ -1,0 +1,8 @@
+<h4 (click)="toggle()">{{type | titlecase}} ({{show ? 'hide' : 'show'}})</h4>
+<div class="cards" *ngIf="show">
+  <div class="card-wrapper" *ngFor="let card of value">
+    <div class="prev" (click)="sendCard(card, type, 0)">&laquo;</div>
+    <div class="next" (click)="sendCard(card, type, 1)">&raquo;</div>
+    <img src="assets/three-spears/{{card.name}}.png" alt="{{card.name}}" class="card">
+  </div>
+</div>
